@@ -38,6 +38,15 @@ export const productDetailsStyles = StyleSheet.create({
       borderRadius: 8,
       alignItems: 'center',
     },
+    subButton: {
+      backgroundColor: 'green',
+      padding: 8,
+      borderRadius: 8,
+      alignItems: 'center',
+    },
+    disabledButton: {
+      backgroundColor: '#ccc',
+    },
     buttonText: {
       color: 'white',
       fontSize: 18,
