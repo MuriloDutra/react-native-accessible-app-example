@@ -43,5 +43,17 @@ export const productDetailsStyles = StyleSheet.create({
       fontSize: 18,
       fontWeight: 'bold',
     },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    closeButton: {
+      position: 'absolute',
+      top: 10,
+      right: 10,
+      backgroundColor: 'black',
+      borderRadius: 100,
+    },
   });
   

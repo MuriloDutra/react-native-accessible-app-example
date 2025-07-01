@@ -1,11 +1,14 @@
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Image, TextInput, TouchableOpacity } from 'react-native';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { useState } from 'react';
+import { Image, Modal, Pressable, TextInput, TouchableOpacity, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { productDetailsStyles } from './commonStyles';
 
 export default function TabTwoScreen() {
   const { top } = useSafeAreaInsets();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <ThemedView style={[productDetailsStyles.container, { paddingTop: top, paddingHorizontal: 20 }]}>
@@ -16,10 +19,14 @@ export default function TabTwoScreen() {
         Playstation 5
       </ThemedText>
       
-      <Image 
-        source={require('@/assets/images/playstation5.jpg')}
-        style={productDetailsStyles.productImage}
-      />
+      <Pressable
+        onPress={() => setIsModalVisible(true)}
+      >
+        <Image 
+          source={require('@/assets/images/playstation5.jpg')}
+          style={productDetailsStyles.productImage}
+        />
+      </Pressable>
       
       <ThemedText type="subtitle" style={productDetailsStyles.price}>
         $499.99
@@ -38,6 +45,20 @@ export default function TabTwoScreen() {
           Add to Cart
         </ThemedText>
       </TouchableOpacity>
+      <Modal
+        visible={isModalVisible}
+        onRequestClose={() => setIsModalVisible(false)}
+      >
+        <View style={productDetailsStyles.modalContainer}>
+          <Pressable onPress={() => setIsModalVisible(false)} style={productDetailsStyles.closeButton}>
+            <IconSymbol name='xmark' size={36} color='white' />
+          </Pressable>
+          <Image
+            source={require('@/assets/images/playstation5.jpg')}
+            style={productDetailsStyles.productImage}
+          />
+        </View>
+      </Modal>
     </ThemedView>
   );
 }
