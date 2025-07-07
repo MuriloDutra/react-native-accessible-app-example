@@ -22,6 +22,9 @@ export default function ProductDetailsScreen() {
       
       <Pressable
         onPress={() => setIsModalVisible(true)}
+        accessibilityLabel='PlayStation 5 product image'
+        accessibilityHint='Open the product image details modal'
+        accessibilityRole='imagebutton'
       >
         <Image 
           source={require('@/assets/images/playstation5.jpg')}
@@ -47,6 +50,7 @@ export default function ProductDetailsScreen() {
         style={[productDetailsStyles.button, zipcode.length === 0 && productDetailsStyles.disabledButton]}
         accessibilityRole='button'
         accessibilityState={{disabled: zipcode.length === 0}}
+        accessibilityHint='Fill in the zip code to add to cart'
         disabled={zipcode.length === 0}
         onPress={() => console.log('Add to Cart')}
       >
@@ -67,6 +71,8 @@ export default function ProductDetailsScreen() {
       <Modal
         visible={isModalVisible}
         onRequestClose={() => setIsModalVisible(false)}
+        accessibilityLabel='Product image details modal'
+        accessibilityHint='Close the product image details modal'
       >
         <View style={productDetailsStyles.modalContainer}>
           <Pressable
